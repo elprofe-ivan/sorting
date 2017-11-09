@@ -15,7 +15,7 @@ def fill(b, a):
 # Define a function for bubble sort arrays
 def bsort(c):
     for i in range(len(c) - 1, 0, -1):
-        for j in range(i - 1):
+        for j in range(i):
             if (c[j] > c[j + 1]):
                 d = c[j]
                 c[j] = c[j + 1]
@@ -27,13 +27,24 @@ def bsort(c):
 def merge(a, b, c):
     i = 0
     j = 0
-    while i < len(a) - 1 and j < len(b) - 1:
+    #comparatives must be minor and equal otherwise repeated numbers are missed!
+    while i <= len(a) - 1 and j <= len(b) - 1:
         if a[i] < b[j]:
             c.append(a[i])
             i += 1
         else:
             c.append(b[j])
             j += 1
+    #The following code is needed to append the forgotten numbers:
+    
+     if (i > j):
+        for m in range(j,len(b)):
+            c.append(b[m])
+
+    else:
+        for m in range(i,len(a)):
+            c.append(a[m])
+    #End of additional code        
     return c
 
 
